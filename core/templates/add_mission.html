@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mission adding</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="checkbox"],
+        input[type="submit"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="checkbox"] {
+            padding: 5px;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="">
+        {% csrf_token %}
+       <label for="titles">Title:</label>
+       <input type="text" name="titles" id="titles">
+       <br>
+       <label for="descriptions">Description:</label>
+       <input type="text" name="descriptions" id="descriptions">
+       <br>
+       <label for="complete">Complete:</label>
+       <input type="checkbox" name="complete" id="complete">
+       <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

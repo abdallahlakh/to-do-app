@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .details-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .details-container h2 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .details-container p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+   <div class="details-container">
+       <h2>Title:</h2>
+       <p>{{data.title}}</p>
+       <h2>Description:</h2>
+       <p>{{data.description}}</p>
+       <h2>Status:</h2>
+       <p>{{data.complete}}</p>
+       <h2>Date of Creation:</h2>
+       <p>{{data.created}}</p>
+   </div>
+</body>
+</html>

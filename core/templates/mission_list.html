@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1, h3 {
+            color: #333;
+            margin: 0;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            vertical-align: top;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .login-link,
+        .logout-link {
+            display: inline-block;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .login-link::before,
+        .logout-link::before {
+            content: '\f007';
+            font-family: 'Font Awesome 5 Free';
+            margin-right: 5px;
+            font-weight: 900;
+        }
+
+        .add-mission-link {
+            display: inline-block;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .add-mission-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+    <div class="logout-link">
+        <i class="fas fa-sign-out-alt"></i>
+        {{request.user}}
+        <a href="logout">Logout</a>
+    </div>
+    {% else %}
+    <div class="login-link">
+        <i class="fas fa-sign-in-alt"></i>
+        <a href="login">Login</a>
+    </div>
+    {% endif %}
+    <table>
+        <tr>
+            <th><h1>MISSION TITLE:</h1></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="{% url 'add_mission' %}" class="add-mission-link">ADD MISSION</a>
+            </td>
+        </tr>
+        {% for missions in data %}
+        <tr>
+            <td>{{missions.title}}</td>
+            <td>
+                <a href="{% url 'mission_detail' missions.id %}">1-Show me the details of the mission</a>
+                <br>
+                <a href="{% url 'mission_update' missions.id %}">2-Update the mission</a>
+                <br>
+                <a href="{% url 'mission_delete' missions.id %}">3-Delete the mission</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
